@@ -11,8 +11,11 @@ int main()
 	for (int r = 0; r < row; r++)
 	{
 		for (int c = 0; c < col; c++)
-			cout << '*';
+		if(c==0 || c==col-1 || r==0 || r== row-1)	cout << "* ";
+		else cout<<"  ";
 
 		cout << endl;
 	}
 }
+
+

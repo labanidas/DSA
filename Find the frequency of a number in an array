@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    
+    int n=15;
+    int arr[15] = {7,2,3,1,7,6,7,1,3,7,0, 5, 5, 5, 4};
+    
+    int key = 5;
+    
+    
+    map<int, int> mp;
+    for(int num: arr){
+        mp[num]++;
+    }    
+    for(auto pair: mp){
+        cout<<pair.first<<" "<<pair.second<<endl;
+        
+        if(pair.first == key) {
+            cout<<"******************************"<<endl;
+             cout<<pair.first<<" "<<pair.second<<endl;
+            cout<<"******************************"<<endl;
+        }
+    }
+    
+    return 0;
+}
+
+

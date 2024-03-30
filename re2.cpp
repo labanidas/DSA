@@ -138,3 +138,21 @@ int main() {
 
     return 0;
 }
+
+// printing fibonacci using recursion
+void printFibonacci(int n, int a = 0, int b = 1, int count = 0) {
+    if (count == n)
+        return;
+
+    cout << a << " ";
+
+    printFibonacci(n, b, a + b, count + 1);
+}
+
+int main() {
+    int n = 9;
+    
+    printFibonacci(n);
+
+    return 0;
+}

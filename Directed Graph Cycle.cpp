@@ -35,7 +35,53 @@ class Solution {
 };
 
 
+// Detect Cycle in Directed Graph using BFS -- https://www.youtube.com/watch?v=74suJP4bwf0&list=PLpIkg8OmuX-LZB9jYzbbZchk277H5CbdY&index=9
 // ------------------------------------------------- BFS -------------------------------------------
 // ------------------------------------------------- BFS -------------------------------------------
 // ------------------------------------------------- BFS -------------------------------------------
 // TOPOLOGICAL SORTING REQUIRED TO LEARN 
+
+
+class Solution
+{
+	public:
+	void topoSortBFS(auto adj, auto& indegree, auto& result, int V){
+	    
+	    queue<int> q;
+	    
+	    for(int i =0; i<V; i++){
+    	     if(indegree[i] == 0)
+    	        q.push(i);
+    	 }
+        while(!q.empty()){
+            
+            int u = q.front();
+            q.pop();
+            result.push_back(u);
+            
+            for(auto& v: adj[u]){
+                indegree[v]--;
+                if(indegree[v] == 0)
+                    q.push(v);
+            }
+            
+        }
+    	 
+	}
+	//Function to return list containing vertices in Topological order. 
+	vector<int> topoSort(int V, vector<int> adj[]) 
+	{   
+	    vector<int> indegree(V, 0);
+	    vector<int> result;
+	    
+    	 for(int i=0; i<V; i++){
+    	     for(auto& u: adj[i]){
+    	         indegree[u]++;
+    	     }
+    	 }
+    	 
+    	 topoSortBFS(adj, indegree, result, V);
+    	 return result;
+	}
+};
+
